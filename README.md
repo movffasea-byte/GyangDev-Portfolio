@@ -1,18 +1,20 @@
 # GyangDev Portfolio
 
-A framework-free, single-page portfolio for Gaba Gyang, a Full-Stack Developer based in Kaduna, Nigeria.
+A React single-page portfolio for Gaba Gyang, a Full-Stack Developer based in Kaduna, Nigeria.
 
 ## Technology
 
-- HTML
+- React
+- Vite
 - CSS
-- Vanilla JavaScript
 
 ## Structure
 
-- `index.html` — page content and SEO metadata
+- `index.html` — application shell and SEO metadata
 - `P-P.css` — responsive styles
-- `script/P-P.js` — accessible mobile navigation and footer year
+- `src/App.jsx` — page sections and composition
+- `src/components/` — reusable interface components
+- `src/data/portfolio.js` — project, experience, and skills content
 - `assets/images/brand/` — approved brand assets
 - `assets/images/projects/` — project screenshots when supplied
 - `assets/images/social/` — approved social-preview assets when supplied
@@ -22,10 +24,11 @@ A framework-free, single-page portfolio for Gaba Gyang, a Full-Stack Developer b
 Run this from the project folder:
 
 ```powershell
-python -m http.server 5500 --bind 127.0.0.1
+npm install
+npm run dev
 ```
 
-Then visit `http://127.0.0.1:5500`. Stop the server with `Ctrl + C`.
+Then visit the local URL Vite displays. Build the production version with `npm run build`.
 
 ## Static deployment
 
