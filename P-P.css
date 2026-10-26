@@ -743,3 +743,32 @@ h3 {
 .has-3d .skills-grid article {
   background: rgba(18, 26, 45, 0.72);
 }
+
+.bookshelf-canvas {
+  width: 100%;
+  height: min(70vw, 520px);
+  min-height: 340px;
+}
+
+.bookshelf-canvas canvas {
+  display: block;
+}
+
+.bookshelf-wrap {
+  position: relative;
+}
+
+.bookshelf-tip {
+  position: absolute;
+  z-index: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+}
