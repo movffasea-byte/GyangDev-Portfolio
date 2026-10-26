@@ -2,16 +2,21 @@
 
 ## Architecture
 
-- This repository is a static, single-page portfolio built with HTML, CSS, and vanilla JavaScript.
-- Do not introduce React, Tailwind, Node.js, npm, bundlers, TypeScript, or other frameworks or tools unless explicitly requested.
-- Preserve the existing structure and relative file paths.
+- This repository is a single-page portfolio built with React 18 and Vite, deployed to GitHub Pages by `.github/workflows/deploy.yml`.
+- Styling is plain CSS in `P-P.css`, imported from `src/main.jsx`. Three.js is used for the optional 3D background.
+- Do not introduce Tailwind, TypeScript, CSS-in-JS, UI/component libraries, or other frameworks or tools unless explicitly requested.
+- Do not add new dependencies without asking.
+- Preserve the existing structure and relative file paths (`base: "./"` in `vite.config.js`).
 
 ## Files and Structure
 
-- `index.html` is the main entry point.
+- `index.html` is the Vite entry; it mounts `#root` and loads `src/main.jsx`. Page metadata and fonts live here.
+- `src/App.jsx` composes the page sections; `src/components/` holds components (`Header`, `ProjectCard`, `Scene3D`).
+- `src/data/portfolio.js` holds profile, experience, skills, and project content. Edit content here rather than in JSX.
 - `P-P.css` contains the site's styling.
-- `script/P-P.js` contains JavaScript behavior.
-- `logo/` contains image assets.
+- `assets/` and `logo/` contain image assets.
+- `script/P-P.js` is legacy from the static version and is no longer loaded by `index.html`.
+- `dist/` is build output; do not edit it by hand.
 - Keep these paths working unless a task explicitly requires restructuring.
 
 ## Development Approach
@@ -53,7 +58,7 @@
 ## Verification
 
 - After changes, inspect the affected files.
-- Since this project has no build system or test suite, use appropriate static checks and run a local static server when visual verification is needed.
+- There is no test suite. Run `npm run build` to verify the app compiles, and `npm run dev` or `npm run preview` when visual verification is needed.
 - Report any checks that could not be performed.
 
 ## Communication
