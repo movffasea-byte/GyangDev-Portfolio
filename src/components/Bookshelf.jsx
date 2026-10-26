@@ -29,9 +29,13 @@ function spineTexture(title, number, color) {
   return texture;
 }
 
-export default function Bookshelf({ projects }) {
+export default function Bookshelf({ projects, selected = -1, onSelect }) {
   const mount = useRef(null);
   const tipRef = useRef(null);
+  const selectedRef = useRef(selected);
+  const onSelectRef = useRef(onSelect);
+  selectedRef.current = selected;
+  onSelectRef.current = onSelect;
 
   useEffect(() => {
     const host = mount.current;
@@ -126,7 +130,6 @@ export default function Bookshelf({ projects }) {
     const raycaster = new THREE.Raycaster();
     const ndc = new THREE.Vector2();
     let hovered = -1;
-    let selected = -1;
     const pick = (event) => {
       const rect = host.getBoundingClientRect();
       ndc.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
@@ -137,7 +140,7 @@ export default function Bookshelf({ projects }) {
     const setHover = (index, event) => {
       hovered = index;
       host.style.cursor = index >= 0 ? "pointer" : "";
-      if (index >= 0 && selected < 0) {
+      if (index >= 0 && selectedRef.current < 0) {
         const rect = host.getBoundingClientRect();
         tip.textContent = `${projects[index].number} · ${projects[index].title}`;
         tip.style.left = `${event.clientX - rect.left}px`;
@@ -156,16 +159,12 @@ export default function Bookshelf({ projects }) {
     const onLeave = () => setHover(-1);
     const onClick = (event) => {
       const index = pick(event);
-      selected = index >= 0 && index !== selected ? index : -1;
+      onSelectRef.current?.(index);
       setHover(index, event);
-    };
-    const onKey = (event) => {
-      if (event.key === "Escape") selected = -1;
     };
     host.addEventListener("pointermove", onPointer, { passive: true });
     host.addEventListener("pointerleave", onLeave);
     host.addEventListener("click", onClick);
-    document.addEventListener("keydown", onKey);
 
     let frame_ = 0;
     let visible = true;
@@ -174,8 +173,9 @@ export default function Bookshelf({ projects }) {
       shelf.rotation.x += (pointer.y * 0.12 - shelf.rotation.x) * 0.05;
       projectBooks.forEach((book, i) => {
         const data = book.userData;
-        const targetZ = selected === i ? 2.6 : hovered === i && selected < 0 ? 0.35 : 0;
-        const targetLift = selected === i ? 0.3 : hovered === i && selected < 0 ? 0.12 : 0;
+        const chosen = selectedRef.current;
+        const targetZ = chosen === i ? 2.6 : hovered === i && chosen < 0 ? 0.35 : 0;
+        const targetLift = chosen === i ? 0.3 : hovered === i && chosen < 0 ? 0.12 : 0;
         data.z += (targetZ - data.z) * 0.12;
         data.lift += (targetLift - data.lift) * 0.12;
         book.position.z = data.z;
@@ -199,7 +199,6 @@ export default function Bookshelf({ projects }) {
       host.removeEventListener("pointermove", onPointer);
       host.removeEventListener("pointerleave", onLeave);
       host.removeEventListener("click", onClick);
-      document.removeEventListener("keydown", onKey);
       document.removeEventListener("visibilitychange", onVisibility);
       disposables.forEach((item) => item.dispose());
       renderer.dispose();
