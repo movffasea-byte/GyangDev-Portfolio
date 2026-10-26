@@ -725,3 +725,14 @@ h3 {
     scroll-behavior: auto;
   }
 }
+
+.scene-3d {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.has-3d .section-muted {
+  background: rgba(18, 26, 45, 0.78);
+}
