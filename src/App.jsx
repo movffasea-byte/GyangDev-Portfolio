@@ -4,7 +4,7 @@ import ProjectCard from "./components/ProjectCard";
 import { experiences, profile, projects, skills } from "./data/portfolio";
 
 const Scene3D = lazy(() => import("./components/Scene3D"));
-const show3D = typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(min-width: 768px)").matches && (navigator.hardwareConcurrency ?? 4) > 2;
+const show3D = typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(min-width: 768px)").matches;
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 

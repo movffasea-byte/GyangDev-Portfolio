@@ -736,3 +736,10 @@ h3 {
 .has-3d .section-muted {
   background: rgba(18, 26, 45, 0.78);
 }
+
+.has-3d .availability-card,
+.has-3d .experience-card,
+.has-3d .project-card,
+.has-3d .skills-grid article {
+  background: rgba(18, 26, 45, 0.72);
+}

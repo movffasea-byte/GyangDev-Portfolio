@@ -1,8 +1,8 @@
-import brandLogo from "../../assets/images/brand/jaifore-logo.jpg";
-import amProductImage from "../../assets/images/projects/am-product.png";
-import amAdminImage from "../../assets/images/projects/am-admin-dashboard.png";
-import birthdayImage from "../../assets/images/projects/birthday-surprise-doorlock-countdown.png";
-import jaiforeDesignImage from "../../assets/images/projects/jaifore-design-page.png";
+import brandLogo from "../../assets/images/brand/jaifore-logo.webp";
+import amProductImage from "../../assets/images/projects/am-product.webp";
+import amAdminImage from "../../assets/images/projects/am-admin-dashboard.webp";
+import birthdayImage from "../../assets/images/projects/birthday-surprise-doorlock-countdown.webp";
+import jaiforeDesignImage from "../../assets/images/projects/jaifore-design-page.webp";
 
 export const profile = { name: "Gaba Gyang", brand: "GyangDev", location: "Kaduna, Nigeria", email: "jaifore@outlook.com", brandLogo };
 export const navigation = [["Home", "#top"], ["About", "#about"], ["Experience", "#experience"], ["Projects", "#work"], ["Skills", "#skills"]];

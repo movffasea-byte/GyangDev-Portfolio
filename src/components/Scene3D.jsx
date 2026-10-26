@@ -20,11 +20,11 @@ export default function Scene3D() {
     const positions = new Float32Array(count * 3).map(() => (Math.random() - 0.5) * 30);
     const particleGeometry = new THREE.BufferGeometry();
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    const particleMaterial = new THREE.PointsMaterial({ color: accent, size: 0.04, transparent: true, opacity: 0.6 });
+    const particleMaterial = new THREE.PointsMaterial({ color: accent, size: 0.06, transparent: true, opacity: 0.85 });
     const particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
 
-    const shapeMaterial = new THREE.MeshBasicMaterial({ color: accent, wireframe: true, transparent: true, opacity: 0.22 });
+    const shapeMaterial = new THREE.MeshBasicMaterial({ color: accent, wireframe: true, transparent: true, opacity: 0.45 });
     const shapes = [new THREE.IcosahedronGeometry(1.6, 0), new THREE.OctahedronGeometry(1.1, 0), new THREE.TetrahedronGeometry(1.3, 0)].map((geometry, i) => {
       const mesh = new THREE.Mesh(geometry, shapeMaterial);
       mesh.position.set([-5, 5.5, 4][i], [1.5, -1, -3][i], [-2, -4, -1][i]);
