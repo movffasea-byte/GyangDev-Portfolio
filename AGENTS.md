@@ -11,7 +11,7 @@
 ## Files and Structure
 
 - `index.html` is the Vite entry; it mounts `#root` and loads `src/main.jsx`. Page metadata and fonts live here.
-- `src/App.jsx` composes the page sections; `src/components/` holds components (`Header`, `ProjectCard`, `Scene3D`).
+- `src/App.jsx` composes the page sections; `src/components/` holds components (`Header`, `ProjectCard`, `ProjectDialog`, `Scene3D`, `Bookshelf`).
 - `src/data/portfolio.js` holds profile, experience, skills, and project content. Edit content here rather than in JSX.
 - `P-P.css` contains the site's styling.
 - `assets/` and `logo/` contain image assets.

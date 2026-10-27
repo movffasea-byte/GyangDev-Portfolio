@@ -7,6 +7,7 @@ A React single-page portfolio for Gaba Gyang, a Full-Stack Developer based in Ka
 - React
 - Vite
 - CSS
+- Three.js (3D background and project bookshelf)
 
 ## Structure
 
